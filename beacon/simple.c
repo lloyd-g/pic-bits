@@ -1,4 +1,4 @@
-#include "pic16f876.h"
+#include <pic14\pic16f876.h>
 
 // Configurations
     typedef unsigned int config;

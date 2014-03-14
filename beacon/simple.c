@@ -3,7 +3,7 @@
 // Configurations
     typedef unsigned int config;
 //    config at 0x2007 __CONFIG = _HS_OSC & _PWRTE_ON & _BODEN_OFF & _WDT_OFF & _LVP_OFF;
-
+unsigned int delayCount = 0;
 // Main body
 void main() {
 
@@ -20,7 +20,11 @@ void main() {
 
     // If button is pressed, toggle PORTB
     while(1) {
-        if(RA4 != 0)
+      while ( delayCount < 40000 ) // Delay Loop
+		{
+			delayCount++;
+		}
+        //if(RA4 != 0)
             PORTB = ~PORTB;
     }
 }

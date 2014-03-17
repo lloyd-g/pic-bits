@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Sat Mar 15 18:14:18 2014
+; This file was generated Mon Mar 17 19:03:41 2014
 ;--------------------------------------------------------
 ; PIC port for the 14-bit core
 ;--------------------------------------------------------
@@ -188,23 +188,23 @@ code_simple	code
 ;; Starting pCode block
 _main	;Function start
 ; 2 exit points
-;	.line	17; "simple.c"	PORTA = 0;
+;	.line	18; "simple.c"	PORTA = 0;
 	BANKSEL	_PORTA
 	CLRF	_PORTA
-;	.line	18; "simple.c"	PORTB = 0;
+;	.line	19; "simple.c"	PORTB = 0;
 	CLRF	_PORTB
-;	.line	21; "simple.c"	TRISA |= 0x10;
+;	.line	22; "simple.c"	TRISA |= 0x10;
 	BANKSEL	_TRISA
 	BSF	_TRISA,4
-;	.line	22; "simple.c"	TRISB &= 0xF0;
+;	.line	23; "simple.c"	TRISB &= 0xF0;
 	MOVLW	0xf0
 	ANDWF	_TRISB,F
-;	.line	25; "simple.c"	PORTB = 0x0A;
+;	.line	26; "simple.c"	PORTB = 0x0A;
 	MOVLW	0x0a
 	BANKSEL	_PORTB
 	MOVWF	_PORTB
 _00105_DS_
-;	.line	29; "simple.c"	while ( delayCount < 40000 ) // Delay Loop
+;	.line	30; "simple.c"	while ( delayCount < 40000 ) // Delay Loop
 	BANKSEL	_delayCount
 	MOVF	_delayCount,W
 	BANKSEL	r0x1002
@@ -235,14 +235,14 @@ _00119_DS_
 	BTFSC	STATUS,0
 	GOTO	_00107_DS_
 ;;genSkipc:3247: created from rifx:02755F24
-;	.line	31; "simple.c"	delayCount++;
+;	.line	32; "simple.c"	delayCount++;
 	BANKSEL	_delayCount
 	INCF	_delayCount,F
 	BTFSC	STATUS,2
 	INCF	(_delayCount + 1),F
 	GOTO	_00105_DS_
 _00107_DS_
-;	.line	34; "simple.c"	PORTB = ~PORTB;
+;	.line	35; "simple.c"	PORTB = ~PORTB;
 	BANKSEL	_PORTB
 	COMF	_PORTB,W
 	MOVWF	_PORTB

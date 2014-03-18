@@ -18,12 +18,12 @@ void main() {
     PORTA = 0;
     PORTB = 0;
 
-    // Set RA4 as input and RB3-RB0 as output
+    // Set RA4 as input and RB0 as output
     TRISA |= 0x10;
-    TRISB &= 0xF0;
+    TRISB &= 0x00;
 
-    // Set value 0x0A to PORTB
-    PORTB = 0x0A;
+    // Set value 0x01 to PORTB
+    PORTB = 0x01;
 
     // If button is pressed, toggle PORTB
     while(1) {

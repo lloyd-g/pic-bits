@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Mon Mar 17 19:03:41 2014
+; This file was generated Tue Mar 18 20:02:47 2014
 ;--------------------------------------------------------
 ; PIC port for the 14-bit core
 ;--------------------------------------------------------
@@ -147,10 +147,6 @@ STK00	res 1
 ;--------------------------------------------------------
 ; compiler-defined variables
 ;--------------------------------------------------------
-UDL_simple_0	udata
-r0x1002	res	1
-r0x1003	res	1
-r0x1004	res	1
 ;--------------------------------------------------------
 ; initialized data
 ;--------------------------------------------------------
@@ -180,11 +176,6 @@ code_simple	code
 ;entry:  _main	;Function start
 ; 2 exit points
 ;has an exit
-;4 compiler assigned registers:
-;   r0x1002
-;   r0x1003
-;   r0x1004
-;   r0x1005
 ;; Starting pCode block
 _main	;Function start
 ; 2 exit points
@@ -203,34 +194,16 @@ _main	;Function start
 	MOVLW	0x0a
 	BANKSEL	_PORTB
 	MOVWF	_PORTB
+;;unsigned compare: left < lit(0xFA0=4000), size=2
 _00105_DS_
-;	.line	30; "simple.c"	while ( delayCount < 40000 ) // Delay Loop
+;	.line	30; "simple.c"	while ( delayCount < 4000 ) // Delay Loop
+	MOVLW	0x0f
 	BANKSEL	_delayCount
-	MOVF	_delayCount,W
-	BANKSEL	r0x1002
-	MOVWF	r0x1002
-	BANKSEL	_delayCount
-	MOVF	(_delayCount + 1),W
-	BANKSEL	r0x1003
-	MOVWF	r0x1003
-	CLRF	r0x1004
-;;1	CLRF	r0x1005
-;;signed compare: left < lit(0x9C40=40000), size=4, mask=ffffffff
-	MOVLW	0x00
-	ADDLW	0x80
-	ADDLW	0x80
+	SUBWF	(_delayCount + 1),W
 	BTFSS	STATUS,2
 	GOTO	_00119_DS_
-	MOVLW	0x00
-	SUBWF	r0x1004,W
-	BTFSS	STATUS,2
-	GOTO	_00119_DS_
-	MOVLW	0x9c
-	SUBWF	r0x1003,W
-	BTFSS	STATUS,2
-	GOTO	_00119_DS_
-	MOVLW	0x40
-	SUBWF	r0x1002,W
+	MOVLW	0xa0
+	SUBWF	_delayCount,W
 _00119_DS_
 	BTFSC	STATUS,0
 	GOTO	_00107_DS_
@@ -252,6 +225,6 @@ _00107_DS_
 
 
 ;	code size estimation:
-;	   37+    9 =    46 instructions (  110 byte)
+;	   23+    6 =    29 instructions (   70 byte)
 
 	end

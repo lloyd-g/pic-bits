@@ -27,7 +27,7 @@ void main() {
 
     // If button is pressed, toggle PORTB
     while(1) {
-      while ( delayCount < 40000 ) // Delay Loop
+      while ( delayCount < 4000 ) // Delay Loop
 		{
 			delayCount++;
 		}

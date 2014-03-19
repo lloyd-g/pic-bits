@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Tue Mar 18 20:02:47 2014
+; This file was generated Wed Mar 19 19:10:47 2014
 ;--------------------------------------------------------
 ; PIC port for the 14-bit core
 ;--------------------------------------------------------
@@ -187,11 +187,10 @@ _main	;Function start
 ;	.line	22; "simple.c"	TRISA |= 0x10;
 	BANKSEL	_TRISA
 	BSF	_TRISA,4
-;	.line	23; "simple.c"	TRISB &= 0xF0;
-	MOVLW	0xf0
-	ANDWF	_TRISB,F
-;	.line	26; "simple.c"	PORTB = 0x0A;
-	MOVLW	0x0a
+;	.line	23; "simple.c"	TRISB &= 0x00;
+	CLRF	_TRISB
+;	.line	26; "simple.c"	PORTB = 0x01;
+	MOVLW	0x01
 	BANKSEL	_PORTB
 	MOVWF	_PORTB
 ;;unsigned compare: left < lit(0xFA0=4000), size=2
@@ -219,12 +218,16 @@ _00107_DS_
 	BANKSEL	_PORTB
 	COMF	_PORTB,W
 	MOVWF	_PORTB
+;	.line	36; "simple.c"	delayCount = 0; // reset counter
+	BANKSEL	_delayCount
+	CLRF	_delayCount
+	CLRF	(_delayCount + 1)
 	GOTO	_00105_DS_
 	RETURN	
 ; exit point of _main
 
 
 ;	code size estimation:
-;	   23+    6 =    29 instructions (   70 byte)
+;	   24+    7 =    31 instructions (   76 byte)
 
 	end

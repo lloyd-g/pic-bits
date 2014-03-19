@@ -1,4 +1,4 @@
-delayCount = 0;#include <pic14\pic16f876.h>
+#include <pic14\pic16f876.h>
 #include <stdint.h> //Needed for uint16_t
 
 //#pragma config CP0=OFF,OSCS=ON,OSC=LP,BOR=ON,BORV=25,WDT=ON,WDTPS=128,CCP2MUX=ON

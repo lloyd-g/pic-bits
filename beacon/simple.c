@@ -1,4 +1,4 @@
-#include <pic14\pic16f876.h>
+delayCount = 0;#include <pic14\pic16f876.h>
 #include <stdint.h> //Needed for uint16_t
 
 //#pragma config CP0=OFF,OSCS=ON,OSC=LP,BOR=ON,BORV=25,WDT=ON,WDTPS=128,CCP2MUX=ON
@@ -33,5 +33,7 @@ void main() {
 		}
         //if(RA4 != 0)
             PORTB = ~PORTB;
+            delayCount = 0; // reset counter
+ 
     }
 }

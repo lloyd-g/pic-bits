@@ -24,7 +24,7 @@ void main(void) {
     TRISB &= 0x00;           /* PORTB.0-3 Output, */
     PORTB = 0x00;           /* PORTB.0-3 to zero, */
 
-    PS2 = 0;                /* 001 @ 4Mhz = 1.024 mS */
+    PS2 = 0;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
     PS1 = 0;  
     PS0 = 1;  
 
@@ -32,7 +32,7 @@ void main(void) {
     GIE = 1;                /* global interrupt enable */
     T0IE = 1;               /* TMR0 overflow interrupt enable */
       
-    TMR0 = 0;               /* clear the value in TMR0 */
+    TMR0 = 0;               /* clear the value in TMR0 cout to overfollow */
 while(1)
  { 
  /* Loop forever */

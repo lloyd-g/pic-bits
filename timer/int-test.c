@@ -4,7 +4,7 @@
 // last one works and puts it in ASM file
 static __code uint16_t __at (0x2007)  config  =  _HS_OSC & _PWRTE_ON & _BODEN_OFF & _WDT_OFF & _LVP_OFF;
 // intrupt toggals PORTB
-static void isr(void) interrupt 0
+void Intr(void) __interrupt 0 
  { 
 T0IF = 0; /* Clear timer interrupt flag */ 
 PORTB = ~PORTB; /* toggals PORTB think its all bits */
@@ -17,7 +17,7 @@ PORTB = ~PORTB; /* toggals PORTB think its all bits */
 // Main body
 void main(void) {
 
-    CMCON = 0x07;           /* disable comparators */
+    //CMCON = 0x07;           /* disable comparators */
     T0CS = 0;               /* clear to enable timer mode */
     PSA = 0;                /* clear to assign prescaller to TMRO */
 

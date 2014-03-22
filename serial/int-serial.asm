@@ -1,11 +1,11 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Sat Mar 22 19:41:58 2014
+; This file was generated Sat Mar 22 20:16:55 2014
 ;--------------------------------------------------------
 ; PIC port for the 14-bit core
 ;--------------------------------------------------------
-;	.file	"int-serial.c"
+	.file	"int-serial.c"
 	list	p=16f876
 	radix dec
 	include "p16f876.inc"
@@ -173,43 +173,179 @@ __sdcc_interrupt
 ;entry:  _Intr	;Function start
 ; 0 exit points
 ;; Starting pCode block
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2340:genFunction *{*
+;; ***	genFunction  2342 curr label offset=0previous max_key=0 
 _Intr	;Function start
 ; 0 exit points
-;	.line	8; "int-serial.c"	void Intr(void) __interrupt 0 
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2407:genFunction
+	.line	8; "int-serial.c"	void Intr(void) __interrupt 0 
 	MOVWF	WSAVE
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2408:genFunction
 	SWAPF	STATUS,W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2413:genFunction
 	CLRF	STATUS
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2414:genFunction
 	MOVWF	SSAVE
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2416:genFunction
 	MOVF	PCLATH,W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2418:genFunction
 	CLRF	PCLATH
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2419:genFunction
 	MOVWF	PSAVE
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2421:genFunction
 	MOVF	FSR,W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2422:genFunction
 	BANKSEL	___sdcc_saved_fsr
 	MOVWF	___sdcc_saved_fsr
-;	.line	10; "int-serial.c"	if(TXIF) { // serial interrupt
-	BANKSEL	_PIR1bits
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _INTCONbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; 	line = 6506 result AOP_PCODE=_INTCONbits, size=2, left -=-, size=0, right AOP_LIT=0x00, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	10; "int-serial.c"	T0IF = 0; /* Clear timer interrupt flag */ 
+	BANKSEL	_INTCONbits
+	BCF	_INTCONbits,2
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:1609:genCpl *{*
+;; ***	genCpl  1611
+;; ***	aopForSym 315
+;;	327 sym->rname = _PORTB, size = 1
+;;	575
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:1631:genCpl
+;;	1009
+;;	1028  _PORTB   offset=0
+	.line	11; "int-serial.c"	PORTB = ~PORTB; /* toggals PORTB think its all bits */	
+	COMF	_PORTB,W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:1632:genCpl
+;;	1009
+;;	1028  _PORTB   offset=0
+	MOVWF	_PORTB
+;; ***	addSign  861
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/genarith.c:862:addSign *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6145:genPointerGet *{*
+;; ***	genPointerGet  6146
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:5927:genNearPointerGet *{*
+;; ***	genNearPointerGet  5928
+;;	613
+;;	aopForRemat 392
+;;	418: rname _PIR1bits, val 0, const = 0
+;; ***	genNearPointerGet  5944
+;;	694 register type nRegs=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:5743:genUnpackBits *{*
+;; ***	genUnpackBits  5744
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_PIR1bits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:5766:genUnpackBits
+	.line	12; "int-serial.c"	if(TXIF) { // serial interrupt
 	BTFSS	_PIR1bits,4
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:5767:genUnpackBits
+;; ***	popGetLabel  key=3, label offset 4
 	GOTO	_00107_DS_
-;	.line	13; "int-serial.c"	TXREG = 'n';
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _PIR1bits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_PIR1bits
+;; 	line = 6506 result AOP_PCODE=_PIR1bits, size=2, left -=-, size=0, right AOP_LIT=0x00, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_PIR1bits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	14; "int-serial.c"	TXIF = 0; // not doable :)
+	BCF	_PIR1bits,4
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _TXREG, size = 1
+;; 	line = 6920 result AOP_DIR=_TXREG, size=1, left -=-, size=0, right AOP_LIT=0x6e, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7013:genAssign
+	.line	15; "int-serial.c"	TXREG = 'n';
 	MOVLW	0x6e
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7015:genAssign
+;;	1009
+;;	1028  _TXREG   offset=0
 	MOVWF	_TXREG
-;	.line	14; "int-serial.c"	TXIE = 0;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _PIE1bits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_PIE1bits
+;; 	line = 6506 result AOP_PCODE=_PIE1bits, size=2, left -=-, size=0, right AOP_LIT=0x00, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_PIE1bits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	16; "int-serial.c"	TXIE = 0;
 	BANKSEL	_PIE1bits
 	BCF	_PIE1bits,4
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2528:genEndFunction *{*
+;; ***	genEndFunction  2530
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2622:genEndFunction
 _00107_DS_
 	BANKSEL	___sdcc_saved_fsr
 	MOVF	___sdcc_saved_fsr,W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2623:genEndFunction
 	BANKSEL	FSR
 	MOVWF	FSR
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2625:genEndFunction
 	MOVF	PSAVE,W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2626:genEndFunction
 	MOVWF	PCLATH
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2627:genEndFunction
 	CLRF	STATUS
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2629:genEndFunction
 	SWAPF	SSAVE,W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2630:genEndFunction
 	MOVWF	STATUS
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2631:genEndFunction
 	SWAPF	WSAVE,F
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2632:genEndFunction
 	SWAPF	WSAVE,W
 END_OF_INTERRUPT
 	RETFIE	
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7409:genpic14Code *{*
 
 ;--------------------------------------------------------
 ; code
@@ -222,42 +358,447 @@ code_int_serial	code
 ; 2 exit points
 ;has an exit
 ;; Starting pCode block
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2340:genFunction *{*
+;; ***	genFunction  2342 curr label offset=4previous max_key=3 
 _main	;Function start
 ; 2 exit points
-;	.line	23; "int-serial.c"	NOT_RBPU=0;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _OPTION_REGbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; 	line = 6506 result AOP_PCODE=_OPTION_REGbits, size=2, left -=-, size=0, right AOP_LIT=0x00, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	25; "int-serial.c"	NOT_RBPU=0;
 	BANKSEL	_OPTION_REGbits
 	BCF	_OPTION_REGbits,7
-;	.line	27; "int-serial.c"	SPBRG = 25; // 16MHz => 9600 baud
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _SPBRG, size = 1
+;; 	line = 6920 result AOP_DIR=_SPBRG, size=1, left -=-, size=0, right AOP_LIT=0x19, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7013:genAssign
+	.line	29; "int-serial.c"	SPBRG = 25; // 16MHz => 9600 baud
 	MOVLW	0x19
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7015:genAssign
+;;	1009
+;;	1028  _SPBRG   offset=0
 	MOVWF	_SPBRG
-;	.line	28; "int-serial.c"	BRGH = 0;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _TXSTAbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_TXSTAbits
+;; 	line = 6506 result AOP_PCODE=_TXSTAbits, size=2, left -=-, size=0, right AOP_LIT=0x00, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_TXSTAbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	30; "int-serial.c"	BRGH = 0;
 	BCF	_TXSTAbits,2
-;	.line	29; "int-serial.c"	SYNC = 0;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _TXSTAbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_TXSTAbits
+;; 	line = 6506 result AOP_PCODE=_TXSTAbits, size=2, left -=-, size=0, right AOP_LIT=0x00, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_TXSTAbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	31; "int-serial.c"	SYNC = 0;
 	BCF	_TXSTAbits,4
-;	.line	30; "int-serial.c"	SPEN = 1;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _RCSTAbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_RCSTAbits
+;; 	line = 6506 result AOP_PCODE=_RCSTAbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_RCSTAbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	32; "int-serial.c"	SPEN = 1;
 	BANKSEL	_RCSTAbits
 	BSF	_RCSTAbits,7
-;	.line	31; "int-serial.c"	RCIE = 1;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _PIE1bits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_PIE1bits
+;; 	line = 6506 result AOP_PCODE=_PIE1bits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_PIE1bits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	33; "int-serial.c"	RCIE = 1;
 	BANKSEL	_PIE1bits
 	BSF	_PIE1bits,5
-;	.line	32; "int-serial.c"	CREN = 1;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _RCSTAbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_RCSTAbits
+;; 	line = 6506 result AOP_PCODE=_RCSTAbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_RCSTAbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	34; "int-serial.c"	CREN = 1;
 	BANKSEL	_RCSTAbits
 	BSF	_RCSTAbits,4
-;	.line	34; "int-serial.c"	GIE = 1;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _INTCONbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; 	line = 6506 result AOP_PCODE=_INTCONbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	36; "int-serial.c"	GIE = 1;
 	BSF	_INTCONbits,7
-;	.line	35; "int-serial.c"	PEIE = 1;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _INTCONbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; 	line = 6506 result AOP_PCODE=_INTCONbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	37; "int-serial.c"	PEIE = 1;
 	BSF	_INTCONbits,6
-;	.line	37; "int-serial.c"	TRISB = 0;
-	BANKSEL	_TRISB
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _TRISC, size = 1
+;; 	line = 6920 result AOP_DIR=_TRISC, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _TRISC   offset=0
+	.line	38; "int-serial.c"	TRISC = 0;
+	BANKSEL	_TRISC
+	CLRF	_TRISC
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _TRISB, size = 1
+;; 	line = 6920 result AOP_DIR=_TRISB, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _TRISB   offset=0
+	.line	39; "int-serial.c"	TRISB = 0;
 	CLRF	_TRISB
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _PORTC, size = 1
+;; 	line = 6920 result AOP_DIR=_PORTC, size=1, left -=-, size=0, right AOP_LIT=0x0f, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7013:genAssign
+	.line	40; "int-serial.c"	PORTC = 0x0f;
+	MOVLW	0x0f
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7015:genAssign
+;;	1009
+;;	1028  _PORTC   offset=0
+	BANKSEL	_PORTC
+	MOVWF	_PORTC
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _OPTION_REGbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; 	line = 6506 result AOP_PCODE=_OPTION_REGbits, size=2, left -=-, size=0, right AOP_LIT=0x00, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	42; "int-serial.c"	T0CS = 0;               /* clear to enable timer mode */
+	BANKSEL	_OPTION_REGbits
+	BCF	_OPTION_REGbits,5
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _OPTION_REGbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; 	line = 6506 result AOP_PCODE=_OPTION_REGbits, size=2, left -=-, size=0, right AOP_LIT=0x00, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	43; "int-serial.c"	PSA = 0;                /* clear to assign prescaller to TMRO */
+	BCF	_OPTION_REGbits,3
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7383:genDummyRead *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _TRISB, size = 1
+;; 	line = 6920 result AOP_DIR=_TRISB, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _TRISB   offset=0
+	.line	45; "int-serial.c"	TRISB &= 0x00;           /* PORTB.0-3 Output, */
+	CLRF	_TRISB
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _PORTB, size = 1
+;; 	line = 6920 result AOP_DIR=_PORTB, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _PORTB   offset=0
+	.line	46; "int-serial.c"	PORTB = 0x00;           /* PORTB.0-3 to zero, */
+	BANKSEL	_PORTB
+	CLRF	_PORTB
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _OPTION_REGbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; 	line = 6506 result AOP_PCODE=_OPTION_REGbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	48; "int-serial.c"	PS2 = 1;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
+	BANKSEL	_OPTION_REGbits
+	BSF	_OPTION_REGbits,2
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _OPTION_REGbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; 	line = 6506 result AOP_PCODE=_OPTION_REGbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	49; "int-serial.c"	PS1 = 1;  
+	BSF	_OPTION_REGbits,1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _OPTION_REGbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; 	line = 6506 result AOP_PCODE=_OPTION_REGbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_OPTION_REGbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	50; "int-serial.c"	PS0 = 1;  
+	BSF	_OPTION_REGbits,0
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _INTCON, size = 1
+;; 	line = 6920 result AOP_DIR=_INTCON, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1024  _INTCON   offset=0 - had to alloc by reg name
+	.line	52; "int-serial.c"	INTCON = 0;             /* clear interrupt flag bits */
+	BANKSEL	_INTCON
+	CLRF	_INTCON
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _INTCONbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; 	line = 6506 result AOP_PCODE=_INTCONbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	53; "int-serial.c"	GIE = 1;                /* global interrupt enable */
+	BSF	_INTCONbits,7
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
+;; ***	genPointerSet  6670
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6488:genNearPointerSet *{*
+;; ***	genNearPointerSet  6489
+;;	613
+;;	aopForRemat 392
+;;	418: rname _INTCONbits, val 0, const = 0
+;; ***	genNearPointerSet  6504
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; 	line = 6506 result AOP_PCODE=_INTCONbits, size=2, left -=-, size=0, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6232:genPackBits *{*
+;; ***	genPackBits  6233
+;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
+;;	_INTCONbits
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
+	.line	54; "int-serial.c"	T0IE = 1;               /* TMR0 overflow interrupt enable */
+	BSF	_INTCONbits,5
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _TMR0, size = 1
+;; 	line = 6920 result AOP_DIR=_TMR0, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _TMR0   offset=0
+	.line	56; "int-serial.c"	TMR0 = 0;               /* clear the value in TMR0 cout to overfollow */
+	CLRF	_TMR0
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2778:genGoto *{*
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2780:genGoto
+;; ***	popGetLabel  key=2, label offset 11
 _00113_DS_
-;	.line	38; "int-serial.c"	while(1);
+	.line	57; "int-serial.c"	while(1);
 	GOTO	_00113_DS_
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2528:genEndFunction *{*
+;; ***	genEndFunction  2530
 	RETURN	
 ; exit point of _main
 
 
 ;	code size estimation:
-;	   37+   10 =    47 instructions (  114 byte)
+;	   55+   15 =    70 instructions (  170 byte)
 
 	end

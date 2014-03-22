@@ -1,11 +1,11 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Wed Mar 19 19:10:47 2014
+; This file was generated Sat Mar 22 20:00:32 2014
 ;--------------------------------------------------------
 ; PIC port for the 14-bit core
 ;--------------------------------------------------------
-;	.file	"simple.c"
+	.file	"simple.c"
 	list	p=16f876
 	radix dec
 	include "p16f876.inc"
@@ -177,52 +177,197 @@ code_simple	code
 ; 2 exit points
 ;has an exit
 ;; Starting pCode block
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2340:genFunction *{*
+;; ***	genFunction  2342 curr label offset=0previous max_key=0 
 _main	;Function start
 ; 2 exit points
-;	.line	18; "simple.c"	PORTA = 0;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _PORTA, size = 1
+;; 	line = 6920 result AOP_DIR=_PORTA, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1024  _PORTA   offset=0 - had to alloc by reg name
+	.line	18; "simple.c"	PORTA = 0;
 	BANKSEL	_PORTA
 	CLRF	_PORTA
-;	.line	19; "simple.c"	PORTB = 0;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _PORTB, size = 1
+;; 	line = 6920 result AOP_DIR=_PORTB, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _PORTB   offset=0
+	.line	19; "simple.c"	PORTB = 0;
 	CLRF	_PORTB
-;	.line	22; "simple.c"	TRISA |= 0x10;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:4220:genOr *{*
+;; ***	genOr  4221
+;; ***	aopForSym 315
+;;	327 sym->rname = _TRISA, size = 1
+;;	575
+;; 	line = 4227 result AOP_DIR=_TRISA, size=1, left AOP_DIR=_TRISA, size=1, right AOP_LIT=0x10, size=1
+;; 	line = 4253 result AOP_DIR=_TRISA, size=1, left AOP_DIR=_TRISA, size=1, right AOP_LIT=0x10, size=1
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:4404:genOr
+	.line	22; "simple.c"	TRISA |= 0x10;
 	BANKSEL	_TRISA
 	BSF	_TRISA,4
-;	.line	23; "simple.c"	TRISB &= 0x00;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7383:genDummyRead *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _TRISB, size = 1
+;; 	line = 6920 result AOP_DIR=_TRISB, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _TRISB   offset=0
+	.line	23; "simple.c"	TRISB &= 0x00;
 	CLRF	_TRISB
-;	.line	26; "simple.c"	PORTB = 0x01;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _PORTB, size = 1
+;; 	line = 6920 result AOP_DIR=_PORTB, size=1, left -=-, size=0, right AOP_LIT=0x01, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7013:genAssign
+	.line	26; "simple.c"	PORTB = 0x01;
 	MOVLW	0x01
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7015:genAssign
+;;	1009
+;;	1028  _PORTB   offset=0
 	BANKSEL	_PORTB
 	MOVWF	_PORTB
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3583:genCmpLt *{*
+;; ***	genCmpLt  3584
+;; ***	aopForSym 315
+;;	327 sym->rname = _delayCount, size = 2
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3294:genCmp *{*
 ;;unsigned compare: left < lit(0xFA0=4000), size=2
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3265:pic14_mov2w_regOrLit
 _00105_DS_
-;	.line	30; "simple.c"	while ( delayCount < 4000 ) // Delay Loop
+	.line	30; "simple.c"	while ( delayCount < 4000 ) // Delay Loop
 	MOVLW	0x0f
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3432:genCmp
+;;	1009
+;;	1028  _delayCount   offset=1
 	BANKSEL	_delayCount
 	SUBWF	(_delayCount + 1),W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3477:genCmp
 	BTFSS	STATUS,2
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3478:genCmp
+;; ***	popGetLabel  key=15, label offset 4
 	GOTO	_00119_DS_
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3265:pic14_mov2w_regOrLit
 	MOVLW	0xa0
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3480:genCmp
+;;	1009
+;;	1028  _delayCount   offset=0
 	SUBWF	_delayCount,W
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3237:genSkipc *{*
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3242:genSkipc
 _00119_DS_
 	BTFSC	STATUS,0
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:3246:genSkipc
+;; ***	popGetLabel  key=3, label offset 4
 	GOTO	_00107_DS_
 ;;genSkipc:3247: created from rifx:02755F24
-;	.line	32; "simple.c"	delayCount++;
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;; ***	genPlus  611
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/genarith.c:612:genPlus *{*
+;; ***	aopForSym 315
+;;	327 sym->rname = _delayCount, size = 2
+;; 	line = 618 result AOP_DIR=_delayCount, size=2, left AOP_DIR=_delayCount, size=2, right AOP_LIT=0x01, size=1
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/genarith.c:142:genPlusIncr *{*
+;; ***	genPlusIncr  144
+;; 	result AOP_DIR, left AOP_DIR, right AOP_LIT
+;; 	genPlusIncr  156
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/genarith.c:168:genPlusIncr
+;;	1009
+;;	1028  _delayCount   offset=0
+	.line	32; "simple.c"	delayCount++;
 	BANKSEL	_delayCount
 	INCF	_delayCount,F
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/genarith.c:172:genPlusIncr
 	BTFSC	STATUS,2
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/genarith.c:173:genPlusIncr
+;;	1009
+;;	1028  _delayCount   offset=1
 	INCF	(_delayCount + 1),F
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2778:genGoto *{*
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2780:genGoto
+;; ***	popGetLabel  key=1, label offset 4
 	GOTO	_00105_DS_
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:1609:genCpl *{*
+;; ***	genCpl  1611
+;; ***	aopForSym 315
+;;	327 sym->rname = _PORTB, size = 1
+;;	575
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:1631:genCpl
+;;	1009
+;;	1028  _PORTB   offset=0
 _00107_DS_
-;	.line	35; "simple.c"	PORTB = ~PORTB;
+	.line	35; "simple.c"	PORTB = ~PORTB;
 	BANKSEL	_PORTB
 	COMF	_PORTB,W
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:1632:genCpl
+;;	1009
+;;	1028  _PORTB   offset=0
 	MOVWF	_PORTB
-;	.line	36; "simple.c"	delayCount = 0; // reset counter
+;; ***	addSign  861
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/genarith.c:862:addSign *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
+;;	327 sym->rname = _delayCount, size = 2
+;; 	line = 6920 result AOP_DIR=_delayCount, size=2, left -=-, size=0, right AOP_LIT=0x00, size=2
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _delayCount   offset=0
+	.line	36; "simple.c"	delayCount = 0; // reset counter
 	BANKSEL	_delayCount
 	CLRF	_delayCount
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _delayCount   offset=1
 	CLRF	(_delayCount + 1)
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2778:genGoto *{*
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2780:genGoto
+;; ***	popGetLabel  key=1, label offset 4
 	GOTO	_00105_DS_
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
+;; ***	genLabel  2763
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2528:genEndFunction *{*
+;; ***	genEndFunction  2530
 	RETURN	
 ; exit point of _main
 

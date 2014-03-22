@@ -7,9 +7,11 @@ static __code uint16_t __at (0x2007)  config  =  _HS_OSC & _PWRTE_ON & _BODEN_OF
 
 void Intr(void) __interrupt 0 
 {
+T0IF = 0; /* Clear timer interrupt flag */ 
+PORTB = ~PORTB; /* toggals PORTB think its all bits */	
   if(TXIF) { // serial interrupt
     // Most interrupts must be cleared in software:
-    // TXIF = 0; // not doable :)
+     TXIF = 0; // not doable :)
     TXREG = 'n';
     TXIE = 0;
   } 
@@ -33,7 +35,24 @@ void main() {
   
   GIE = 1;
   PEIE = 1;
-  
+  TRISC = 0;
   TRISB = 0;
+ PORTC = 0x0f;
+
+    T0CS = 0;               /* clear to enable timer mode */
+    PSA = 0;                /* clear to assign prescaller to TMRO */
+
+    TRISB &= 0x00;           /* PORTB.0-3 Output, */
+    PORTB = 0x00;           /* PORTB.0-3 to zero, */
+
+    PS2 = 1;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
+    PS1 = 1;  
+    PS0 = 1;  
+
+    INTCON = 0;             /* clear interrupt flag bits */
+    GIE = 1;                /* global interrupt enable */
+    T0IE = 1;               /* TMR0 overflow interrupt enable */
+      
+    TMR0 = 0;               /* clear the value in TMR0 cout to overfollow */
   while(1);
 }

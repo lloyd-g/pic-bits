@@ -24,8 +24,8 @@ void main(void) {
     TRISB &= 0x00;           /* PORTB.0-3 Output, */
     PORTB = 0x00;           /* PORTB.0-3 to zero, */
 
-    PS2 = 0;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
-    PS1 = 0;  
+    PS2 = 1;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
+    PS1 = 1;  
     PS0 = 1;  
 
     INTCON = 0;             /* clear interrupt flag bits */

@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Sat Mar 22 09:16:00 2014
+; This file was generated Sat Mar 22 09:20:04 2014
 ;--------------------------------------------------------
 ; PIC port for the 14-bit core
 ;--------------------------------------------------------
@@ -229,9 +229,9 @@ _main	;Function start
 ;	.line	25; "int-test.c"	PORTB = 0x00;           /* PORTB.0-3 to zero, */
 	BANKSEL	_PORTB
 	CLRF	_PORTB
-;	.line	27; "int-test.c"	PS2 = 0;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
+;	.line	27; "int-test.c"	PS2 = 1;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
 	BANKSEL	_OPTION_REGbits
-	BCF	_OPTION_REGbits,2
+	BSF	_OPTION_REGbits,2
 ;	.line	28; "int-test.c"	PS1 = 1;  
 	BSF	_OPTION_REGbits,1
 ;	.line	29; "int-test.c"	PS0 = 1;  

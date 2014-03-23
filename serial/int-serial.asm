@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Sat Mar 22 20:16:55 2014
+; This file was generated Sun Mar 23 09:00:47 2014
 ;--------------------------------------------------------
 ; PIC port for the 14-bit core
 ;--------------------------------------------------------
@@ -391,12 +391,24 @@ _main	;Function start
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
 ;; ***	genAssign  6911
 ;; ***	aopForSym 315
+;;	327 sym->rname = _TRISC, size = 1
+;; 	line = 6920 result AOP_DIR=_TRISC, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; ***	genAssign  7006
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;;	1009
+;;	1028  _TRISC   offset=0
+	.line	28; "int-serial.c"	TRISC = 0; 
+	CLRF	_TRISC
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
+;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
+;; ***	genAssign  6911
+;; ***	aopForSym 315
 ;;	327 sym->rname = _SPBRG, size = 1
-;; 	line = 6920 result AOP_DIR=_SPBRG, size=1, left -=-, size=0, right AOP_LIT=0x19, size=1
+;; 	line = 6920 result AOP_DIR=_SPBRG, size=1, left -=-, size=0, right AOP_LIT=0xc8, size=1
 ;; ***	genAssign  7006
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7013:genAssign
-	.line	29; "int-serial.c"	SPBRG = 25; // 16MHz => 9600 baud
-	MOVLW	0x19
+	.line	29; "int-serial.c"	SPBRG = 200; // 16MHz => 9600 baud
+	MOVLW	0xc8
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7015:genAssign
 ;;	1009
 ;;	1028  _SPBRG   offset=0
@@ -545,46 +557,6 @@ _main	;Function start
 	.line	37; "int-serial.c"	PEIE = 1;
 	BSF	_INTCONbits,6
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
-;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
-;; ***	genAssign  6911
-;; ***	aopForSym 315
-;;	327 sym->rname = _TRISC, size = 1
-;; 	line = 6920 result AOP_DIR=_TRISC, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
-;; ***	genAssign  7006
-;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
-;;	1009
-;;	1028  _TRISC   offset=0
-	.line	38; "int-serial.c"	TRISC = 0;
-	BANKSEL	_TRISC
-	CLRF	_TRISC
-;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
-;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
-;; ***	genAssign  6911
-;; ***	aopForSym 315
-;;	327 sym->rname = _TRISB, size = 1
-;; 	line = 6920 result AOP_DIR=_TRISB, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
-;; ***	genAssign  7006
-;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
-;;	1009
-;;	1028  _TRISB   offset=0
-	.line	39; "int-serial.c"	TRISB = 0;
-	CLRF	_TRISB
-;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
-;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
-;; ***	genAssign  6911
-;; ***	aopForSym 315
-;;	327 sym->rname = _PORTC, size = 1
-;; 	line = 6920 result AOP_DIR=_PORTC, size=1, left -=-, size=0, right AOP_LIT=0x0f, size=1
-;; ***	genAssign  7006
-;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7013:genAssign
-	.line	40; "int-serial.c"	PORTC = 0x0f;
-	MOVLW	0x0f
-;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7015:genAssign
-;;	1009
-;;	1028  _PORTC   offset=0
-	BANKSEL	_PORTC
-	MOVWF	_PORTC
-;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6669:genPointerSet *{*
 ;; ***	genPointerSet  6670
@@ -602,7 +574,7 @@ _main	;Function start
 ;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
 ;;	_OPTION_REGbits
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
-	.line	42; "int-serial.c"	T0CS = 0;               /* clear to enable timer mode */
+	.line	41; "int-serial.c"	T0CS = 0;               /* clear to enable timer mode */
 	BANKSEL	_OPTION_REGbits
 	BCF	_OPTION_REGbits,5
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
@@ -623,7 +595,7 @@ _main	;Function start
 ;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
 ;;	_OPTION_REGbits
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
-	.line	43; "int-serial.c"	PSA = 0;                /* clear to assign prescaller to TMRO */
+	.line	42; "int-serial.c"	PSA = 0;                /* clear to assign prescaller to TMRO */
 	BCF	_OPTION_REGbits,3
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7383:genDummyRead *{*
@@ -637,7 +609,7 @@ _main	;Function start
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
 ;;	1009
 ;;	1028  _TRISB   offset=0
-	.line	45; "int-serial.c"	TRISB &= 0x00;           /* PORTB.0-3 Output, */
+	.line	44; "int-serial.c"	TRISB &= 0x00;           /* PORTB.0-3 Output, */
 	CLRF	_TRISB
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
@@ -649,7 +621,7 @@ _main	;Function start
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
 ;;	1009
 ;;	1028  _PORTB   offset=0
-	.line	46; "int-serial.c"	PORTB = 0x00;           /* PORTB.0-3 to zero, */
+	.line	45; "int-serial.c"	PORTB = 0x00;           /* PORTB.0-3 to zero, */
 	BANKSEL	_PORTB
 	CLRF	_PORTB
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
@@ -670,7 +642,7 @@ _main	;Function start
 ;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
 ;;	_OPTION_REGbits
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
-	.line	48; "int-serial.c"	PS2 = 1;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
+	.line	47; "int-serial.c"	PS2 = 1;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
 	BANKSEL	_OPTION_REGbits
 	BSF	_OPTION_REGbits,2
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
@@ -691,7 +663,7 @@ _main	;Function start
 ;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
 ;;	_OPTION_REGbits
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
-	.line	49; "int-serial.c"	PS1 = 1;  
+	.line	48; "int-serial.c"	PS1 = 1;  
 	BSF	_OPTION_REGbits,1
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
@@ -711,7 +683,7 @@ _main	;Function start
 ;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
 ;;	_OPTION_REGbits
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
-	.line	50; "int-serial.c"	PS0 = 1;  
+	.line	49; "int-serial.c"	PS0 = 1;  
 	BSF	_OPTION_REGbits,0
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
@@ -723,7 +695,7 @@ _main	;Function start
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
 ;;	1009
 ;;	1024  _INTCON   offset=0 - had to alloc by reg name
-	.line	52; "int-serial.c"	INTCON = 0;             /* clear interrupt flag bits */
+	.line	51; "int-serial.c"	INTCON = 0;             /* clear interrupt flag bits */
 	BANKSEL	_INTCON
 	CLRF	_INTCON
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
@@ -744,7 +716,7 @@ _main	;Function start
 ;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
 ;;	_INTCONbits
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
-	.line	53; "int-serial.c"	GIE = 1;                /* global interrupt enable */
+	.line	52; "int-serial.c"	GIE = 1;                /* global interrupt enable */
 	BSF	_INTCONbits,7
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
@@ -764,7 +736,7 @@ _main	;Function start
 ;;	833: aopGet AOP_PCODE type PO_IMMEDIATE
 ;;	_INTCONbits
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6258:genPackBits
-	.line	54; "int-serial.c"	T0IE = 1;               /* TMR0 overflow interrupt enable */
+	.line	53; "int-serial.c"	T0IE = 1;               /* TMR0 overflow interrupt enable */
 	BSF	_INTCONbits,5
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
@@ -776,7 +748,7 @@ _main	;Function start
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
 ;;	1009
 ;;	1028  _TMR0   offset=0
-	.line	56; "int-serial.c"	TMR0 = 0;               /* clear the value in TMR0 cout to overfollow */
+	.line	55; "int-serial.c"	TMR0 = 0;               /* clear the value in TMR0 cout to overfollow */
 	CLRF	_TMR0
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
@@ -786,7 +758,7 @@ _main	;Function start
 ;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2780:genGoto
 ;; ***	popGetLabel  key=2, label offset 11
 _00113_DS_
-	.line	57; "int-serial.c"	while(1);
+	.line	56; "int-serial.c"	while(1);
 	GOTO	_00113_DS_
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2760:genLabel *{*
@@ -799,6 +771,6 @@ _00113_DS_
 
 
 ;	code size estimation:
-;	   55+   15 =    70 instructions (  170 byte)
+;	   52+   13 =    65 instructions (  156 byte)
 
 	end

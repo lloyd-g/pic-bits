@@ -25,8 +25,8 @@ void main() {
   NOT_RBPU=0;
   
   // Configure UART serial transmit
-  
-  SPBRG = 25; // 16MHz => 9600 baud
+  TRISC = 0; 
+  SPBRG = 200; // 16MHz => 9600 baud
   BRGH = 0;
   SYNC = 0;
   SPEN = 1;
@@ -35,9 +35,8 @@ void main() {
   
   GIE = 1;
   PEIE = 1;
-  TRISC = 0;
-  TRISB = 0;
- PORTC = 0x0f;
+ 
+ 
 
     T0CS = 0;               /* clear to enable timer mode */
     PSA = 0;                /* clear to assign prescaller to TMRO */

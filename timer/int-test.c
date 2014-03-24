@@ -7,7 +7,7 @@ static __code uint16_t __at (0x2007)  config  =  _HS_OSC & _PWRTE_ON & _BODEN_OF
 void Intr(void) __interrupt 0 
  { 
 T0IF = 0; /* Clear timer interrupt flag */ 
-PORTB = ~PORTB; /* toggals PORTB think its all bits is there a c way to do 1 pin? */
+RB0 = ~RB0; /* toggals PORTB bit 0? think its all bits is there a c way to do 1 pin? */
  }
 
 

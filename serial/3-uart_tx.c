@@ -10,7 +10,7 @@ static __code uint16_t __at (0x2007)  config  = _XT_OSC & _PWRTE_ON & _BODEN_ON 
 #define KHZ	4000
 #endif
 
-// These are fixed.  The 16f628a can only use these as transmit and recieve.
+// These are fixed.  The 16f876 can only use these as transmit and recieve.
 #define TX_PORT	6
 #define RX_PORT	7
 #define TX_BIT	(1<<TX_PORT)
@@ -53,11 +53,9 @@ void main(void)
 	 * Loop through each character in the array.  The '\0' marks 
 	 * the end of the array.
 	 *
-	 * NOTE:  It does not send repeatedly!  It sends each character 
-	 * ONCE then breaks the loop, stopping in the infinite loop 
-	 * below it.
+	 * then sends again as a beacon
 	 */
-	while(1)
+	while(1) // repeat over and over
 	{
 	for(i=0; str[i] != '\0'; i++)
 	{
@@ -66,5 +64,5 @@ void main(void)
 	}
 }
 
-	while(1);	// Loop forever
+ 
 }

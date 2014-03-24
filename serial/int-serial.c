@@ -25,7 +25,7 @@ void main() {
   NOT_RBPU=0;
   
   // Configure UART serial transmit
-  TRISC = 0; 
+  TRISC = 0x80; // set pit 7 as input all others as out inc bit 6
   SPBRG = 200; // 16MHz => 9600 baud
   BRGH = 0;
   SYNC = 0;

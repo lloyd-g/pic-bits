@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Sun Mar 23 12:14:31 2014
+; This file was generated Mon Mar 24 18:55:04 2014
 ;--------------------------------------------------------
 ; PIC port for the 14-bit core
 ;--------------------------------------------------------
@@ -392,13 +392,15 @@ _main	;Function start
 ;; ***	genAssign  6911
 ;; ***	aopForSym 315
 ;;	327 sym->rname = _TRISC, size = 1
-;; 	line = 6920 result AOP_DIR=_TRISC, size=1, left -=-, size=0, right AOP_LIT=0x00, size=1
+;; 	line = 6920 result AOP_DIR=_TRISC, size=1, left -=-, size=0, right AOP_LIT=0x80, size=1
 ;; ***	genAssign  7006
-;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7018:genAssign
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7013:genAssign
+	.line	28; "int-serial.c"	TRISC = 0x80; // set pit 7 as input all others as out inc bit 6
+	MOVLW	0x80
+;; >>> /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:7015:genAssign
 ;;	1009
 ;;	1028  _TRISC   offset=0
-	.line	28; "int-serial.c"	TRISC = 0; 
-	CLRF	_TRISC
+	MOVWF	_TRISC
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:2316:resultRemat *{*
 ;;; /home/sdcc-builder/build/sdcc-build/orig/sdcc/src/pic14/gen.c:6910:genAssign *{*
 ;; ***	genAssign  6911
@@ -771,6 +773,6 @@ _00113_DS_
 
 
 ;	code size estimation:
-;	   52+   13 =    65 instructions (  156 byte)
+;	   53+   13 =    66 instructions (  158 byte)
 
 	end

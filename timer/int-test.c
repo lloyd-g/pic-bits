@@ -7,7 +7,7 @@ static __code uint16_t __at (0x2007)  config  =  _HS_OSC & _PWRTE_ON & _BODEN_OF
 void Intr(void) __interrupt 0 
  { 
 T0IF = 0; /* Clear timer interrupt flag */ 
-PORTB = ~PORTB; /* toggals PORTB think its all bits */
+PORTB = ~PORTB; /* toggals PORTB think its all bits is there a c way to do 1 pin? */
  }
 
 
@@ -17,14 +17,13 @@ PORTB = ~PORTB; /* toggals PORTB think its all bits */
 // Main body
 void main(void) {
 
-    //CMCON = 0x07;           /* disable comparators */
     T0CS = 0;               /* clear to enable timer mode */
     PSA = 0;                /* clear to assign prescaller to TMRO */
 
     TRISB &= 0x00;           /* PORTB.0-3 Output, */
     PORTB = 0x00;           /* PORTB.0-3 to zero, */
 
-    PS2 = 1;                /* 001 @ 4Mhz = 1.024 mS 1:4 1khz */
+    PS2 = 1;                /* 111 @ *Mhz = 33 mS 1:256 1khz */
     PS1 = 1;  
     PS0 = 1;  
 

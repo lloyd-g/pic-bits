@@ -7,7 +7,7 @@ static __code uint16_t __at (0x2007)  config  = _XT_OSC & _PWRTE_ON & _BODEN_ON 
 
 // If KHZ is not specified by the makefile, assume it to be 4 MHZ
 #ifndef KHZ
-#define KHZ	4000
+#define KHZ	000
 #endif
 
 // These are fixed.  The 16f876 can only use these as transmit and recieve.
@@ -31,16 +31,15 @@ static __code uint16_t __at (0x2007)  config  = _XT_OSC & _PWRTE_ON & _BODEN_ON 
 #endif
 #define SPBRG_VALUE	(unsigned char)(((KHZ*1000L)-BAUD_FACTOR)/BAUD_FACTOR)
 
-// Pop culture reference go
-//static const char str[]="\aQ! Q! Q! Q! US! US! US! US!\r\n";
 
 // Until SDCC supports strings again the message will be far more terse.
-static const char str[]={'h', 'e', 'l', 'l', 'o', '\r', '\n', '\0'};
+static const char str[]={'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', '\r', '\n', '\0'};
 
 void main(void)
 {
 	static unsigned char i;
-
+  TRISB = 0X00;
+  PORTB = 0X00;
 	TRISC|=TX_BIT|RX_BIT;	// These need to be 1 for USART to work
 	SPBRG=SPBRG_VALUE;	// Baud Rate register, calculated by macro
 	BRGH=BAUD_HI;
@@ -57,11 +56,16 @@ void main(void)
 	 */
 	while(1) // repeat over and over
 	{
+  PORTB = 0X01; // message flag on
 	for(i=0; str[i] != '\0'; i++)
 	{
-		TXREG=str[i];	// Add a character to the output buffer
+	 PORTB = 0X03;  // char flag on
+    TXREG=str[i];	// Add a character to the output buffer
 		while(!TXIF);	// Wait while the output buffer is full
+    PORTB = 0X01;  // char flag off
 	}
+   PORTB = 0X00; // message flag on
+   
 }
 
  

@@ -18,7 +18,7 @@ void main() {
 
     // Set value 0x01 to PORTB
     PORTB = 0x01;
-
+// keep repeating
     while(1) {
     // delay while on
        while ( delayCount < 4000 ) // Delay Loop
@@ -35,7 +35,7 @@ void main() {
            delayCount++;
           }
           delayCount = 0; // reset counter 
-     // port off     
+     // port on     
      PORTB = 0x01;
  
     }

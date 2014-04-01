@@ -1,4 +1,4 @@
-#include <p18cxxx.h>
+#include <pic16/pic18f26k20.h>
 
 //#pragma config WDT = OFF
 
@@ -15,18 +15,18 @@ void main (void)
   /* Make all bits on the Port B (LEDs) output bits.
    * If bit is cleared, then the bit is an output bit.
    */
-  TRISB = 0;
+  TRISC = 0;
 
   while (1)
     {
       /* Reset the LEDs */
-      PORTB = 0;
+      PORTC = 0;
 
       /* Delay so human eye can see change */
       delay ();
 
       /* Light the LEDs */
-      PORTB = 0x5A;
+      PORTC = 0x5A;
 
       /* Delay so human eye can see change */
       delay ();

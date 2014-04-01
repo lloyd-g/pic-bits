@@ -125,6 +125,31 @@ void main() {
      da();
      gap(); //O
      space();
+     dit();
+     da();
+     da();
+     gap(); //W
+     da();
+     da();
+     da();
+     gap(); //O
+     dit();
+     da();
+     dit();
+     gap(); //R
+     dit();
+     da();
+     dit();
+     dit();
+     gap(); //L
+     da();
+     dit();
+     dit();
+     gap(); //D
+     space();
+     space();
+     space();
+     
 
     }
 }

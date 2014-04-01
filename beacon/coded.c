@@ -32,6 +32,8 @@ void space()
 
 void dit()
      {
+          // port on
+          PORTB = 0x01;
           while ( delayCount < DIT ) // Delay Loop
                     {
                     delayCount++;
@@ -46,11 +48,13 @@ void dit()
                     delayCount++;
                     }
           delayCount = 0; // reset counter
-          // port on
-          PORTB = 0x01;
+          
+          
      }
 void da()
      {
+          // port on
+          PORTB = 0x01;
           while ( delayCount < DA ) // Delay Loop
                     {
                     delayCount++;
@@ -65,8 +69,8 @@ void da()
                     delayCount++;
                     }
           delayCount = 0; // reset counter
-          // port on
-          PORTB = 0x01;
+          
+          
      }
 
 /* hello world in morse is 
@@ -93,8 +97,8 @@ void main() {
     
     TRISB = 0x00;
 
-    // Set value 0x01 to PORTB
-    PORTB = 0x01;
+    // Set value 0x00 to PORTB
+    PORTB = 0x00;
 // keep repeating
     while(1) {
      dit();

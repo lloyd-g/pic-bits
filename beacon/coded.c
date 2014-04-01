@@ -6,6 +6,30 @@
 static __code uint16_t __at (0x2007)  config  =  _HS_OSC & _PWRTE_ON & _BODEN_OFF & _WDT_OFF & _LVP_OFF;
 
 unsigned int delayCount = 0;
+void gap()
+     {
+          // port off
+          PORTB = 0x00;
+          while ( delayCount < DIT ) // Delay Loop
+                    {
+                    delayCount++;
+                    }
+          delayCount = 0; // reset counter
+          
+          }
+void space()
+     {
+          // port off
+          PORTB = 0x00;
+          while ( delayCount < DA ) // Delay Loop
+                    {
+                    delayCount++;
+                    }
+          delayCount = 0; // reset counter
+          
+          }
+
+
 void dit()
      {
           while ( delayCount < DIT ) // Delay Loop
@@ -45,7 +69,19 @@ void da()
           PORTB = 0x01;
      }
 
+/* hello world in morse is 
+H ....
+E .
+L .-..
+L .-..
+O ---
 
+W .--
+O ---
+R .-.
+L .-..
+D -..
+*/
 // Main body
 void main() {
 
@@ -62,7 +98,28 @@ void main() {
 // keep repeating
     while(1) {
      dit();
+     dit();
+     dit();
+     dit();
+     gap(); //H
+     dit();
+     gap(); //E
+     dit();
      da();
+     dit();
+     dit();
+     gap(); //L
+     dit();
+     da();
+     dit();
+     dit();
+     gap(); //L
+     da();
+     da();
+     da();
+     gap(); //O
+     space();
+
     }
 }
 

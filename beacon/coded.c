@@ -2,6 +2,8 @@
 #include <stdint.h> //Needed for uint16_t
 #define DIT 2000
 #define DA  6000
+#define GAP 6000
+#define SP  14000
 // Configurations
 static __code uint16_t __at (0x2007)  config  =  _HS_OSC & _PWRTE_ON & _BODEN_OFF & _WDT_OFF & _LVP_OFF;
 
@@ -10,7 +12,7 @@ void gap()
      {
           // port off
           PORTB = 0x00;
-          while ( delayCount < DIT ) // Delay Loop
+          while ( delayCount < GAP ) // Delay Loop
                     {
                     delayCount++;
                     }
@@ -21,7 +23,7 @@ void space()
      {
           // port off
           PORTB = 0x00;
-          while ( delayCount < DA ) // Delay Loop
+          while ( delayCount < SP ) // Delay Loop
                     {
                     delayCount++;
                     }

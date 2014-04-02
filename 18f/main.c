@@ -15,18 +15,18 @@ void main (void)
   /* Make all bits on the Port B (LEDs) output bits.
    * If bit is cleared, then the bit is an output bit.
    */
-  TRISC = 0;
+  TRISB = 0;
 
   while (1)
     {
       /* Reset the LEDs */
-      PORTC = 0;
+      PORTB = 0;
 
       /* Delay so human eye can see change */
       delay ();
 
       /* Light the LEDs */
-      PORTC = 0x5A;
+      PORTB = 0x5A;
 
       /* Delay so human eye can see change */
       delay ();

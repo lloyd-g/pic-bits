@@ -1,6 +1,9 @@
 #include <pic16/pic18f26k20.h>
 
-//#pragma config WDT = OFF
+//#pragma from sddc manual? 
+// DS41303G-page 300 
+#pragma config CP0=OFF,OSCS=ON,OSC=INTOSC,BOR=ON,BORV=25,WDT=ON,WDTPS=128,CCP2MUX=ON
+#pragma config STVR=ON
 
 void delay (void)
 {

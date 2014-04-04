@@ -2,8 +2,8 @@
 
 //#pragma from sddc manual? 
 // DS41303G-page 300 
-#pragma config CP0=OFF,OSCS=ON,OSC=INTOSC,BOR=ON,BORV=25,WDT=ON,WDTPS=128,CCP2MUX=ON
-#pragma config STVR=ON
+#pragma config CP0=OFF,OSCS=ON,OSC=LP,BOR=ON,WDT=ON
+ 
 
 void delay (void)
 {

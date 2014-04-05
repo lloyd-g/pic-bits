@@ -1,13 +1,14 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Fri Apr 04 21:32:59 2014
+; This file was generated Sat Apr 05 18:13:37 2014
 ;--------------------------------------------------------
 ; PIC16 port for the Microchip 16-bit core micros
 ;--------------------------------------------------------
 	list	p=18f26k20
 	radix	dec
-	CONFIG	CP0=OFF,OSCS=ON,OSC=LP,BOR=ON,WDT=ON
+	CONFIG	FOSC=INTIO7,BOREN=OFF,WDTEN=OFF,MCLRE=OFF,STVREN=ON
+	CONFIG	LVP=OFF,CP0=OFF
 
 
 ;--------------------------------------------------------
@@ -239,17 +240,17 @@ r0x01	res	1
 ; ; Starting pCode block
 S_main__main	code
 _main:
-;	.line	21; main.c	TRISB = 0;
+;	.line	24; main.c	TRISB = 0;
 	CLRF	_TRISB
 _00115_DS_:
-;	.line	26; main.c	PORTB = 0;
+;	.line	29; main.c	PORTB = 0;
 	CLRF	_PORTB
-;	.line	29; main.c	delay ();
+;	.line	32; main.c	delay ();
 	CALL	_delay
-;	.line	32; main.c	PORTB = 0x5A;
+;	.line	35; main.c	PORTB = 0x5A;
 	MOVLW	0x5a
 	MOVWF	_PORTB
-;	.line	35; main.c	delay ();
+;	.line	38; main.c	delay ();
 	CALL	_delay
 	BRA	_00115_DS_
 	RETURN	
@@ -257,12 +258,12 @@ _00115_DS_:
 ; ; Starting pCode block
 S_main__delay	code
 _delay:
-;	.line	8; main.c	void delay (void)
+;	.line	11; main.c	void delay (void)
 	MOVFF	FSR2L, POSTDEC1
 	MOVFF	FSR1L, FSR2L
 	MOVFF	r0x00, POSTDEC1
 	MOVFF	r0x01, POSTDEC1
-;	.line	12; main.c	for (i = 0; i < 10000; i++)
+;	.line	15; main.c	for (i = 0; i < 10000; i++)
 	MOVLW	0x10
 	MOVWF	r0x00
 	MOVLW	0x27

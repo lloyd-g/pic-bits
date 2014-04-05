@@ -1,8 +1,11 @@
+#include <pic18fregs.h>
+
 #include <pic16/pic18f26k20.h>
 
 //#pragma from sddc manual? 
 // DS41303G-page 300 
-#pragma config CP0=OFF,OSCS=ON,OSC=LP,BOR=ON,WDT=ON
+#pragma config  FOSC = INTIO7, BOREN = OFF, WDTEN = OFF, MCLRE = OFF, STVREN = ON
+#pragma config  LVP = OFF, CP0 = OFF
  
 
 void delay (void)

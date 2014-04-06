@@ -1,14 +1,14 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Sat Apr 05 18:13:37 2014
+; This file was generated Sun Apr 06 13:26:36 2014
 ;--------------------------------------------------------
 ; PIC16 port for the Microchip 16-bit core micros
 ;--------------------------------------------------------
 	list	p=18f26k20
 	radix	dec
 	CONFIG	FOSC=INTIO7,BOREN=OFF,WDTEN=OFF,MCLRE=OFF,STVREN=ON
-	CONFIG	LVP=OFF,CP0=OFF
+	CONFIG	LVP=OFF,CP0=OFF,FCMEN=OFF,IESO=OFF
 
 
 ;--------------------------------------------------------

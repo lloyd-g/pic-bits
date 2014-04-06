@@ -5,7 +5,7 @@
 //#pragma from sddc manual? 
 // DS41303G-page 300 
 #pragma config  FOSC = INTIO7, BOREN = OFF, WDTEN = OFF, MCLRE = OFF, STVREN = ON
-#pragma config  LVP = OFF, CP0 = OFF
+#pragma config  LVP = OFF, CP0 = OFF, FCMEN = OFF, IESO = OFF
  
 
 void delay (void)

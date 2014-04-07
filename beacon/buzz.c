@@ -32,7 +32,6 @@ void main() {
  
     // Initializing ports
  
-    PORTA = 0;
  
     PORTB = 0;
  
@@ -40,37 +39,49 @@ void main() {
  
     // Set RA4 as input and RB0 as output
  
-    TRISA |= 0x10;
+    TRISC = 0x00;
  
-    TRISB &= 0x00;
+    TRISB = 0x00;
+ /*
+ * PWM registers configuration
+ * Fosc = 8000000 Hz
+ * Fpwm = 801.28 Hz (Requested : 800 Hz)
+ * Duty Cycle = 50 %
+ * Resolution is 10 bits
+ * Prescaler is 16
+ * Ensure that your PWM pin is configured as digital output
+ * see more details on http://www.micro-examples.com/
+ * this source code is provided 'as is',
+ * use it at your own risks
+ */
+PR2 = 0b10011011 ;
+T2CON = 0b00000111 ;
+CCPR1L = 0b01001101 ;
+CCP1CON = 0b00111100 ;
+PORTB = 0x01;
  
-
+   
+    while(1) {    
  
-    // Set value 0x01 to PORTB
- 
-    PORTB = 0x01;
- 
-
- 
-    // If button is pressed, toggle PORTB
- 
-    while(1) {
- 
-      while ( delayCount < 4000 ) // Delay Loop
+       while ( delayCount < 4000 ) // Delay Loop
  
                 {
- 
                         delayCount++;
- 
                 }
  
-        //if(RA4 != 0)
+       delayCount = 0; // reset counter
+       PORTB = 0x00;
+       CCPR1L = 0b00000000 ;
  
-            PORTB = ~PORTB;
+       while ( delayCount < 4000 ) // Delay Loop
  
-            delayCount = 0; // reset counter
+                {
+                        delayCount++;
+                }
  
- 
+        delayCount = 0; // reset counter            
+        CCPR1L = 0b01001101 ;
+        PORTB = 0x01;
  
     }
  

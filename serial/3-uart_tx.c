@@ -59,12 +59,12 @@ void main(void)
   PORTB = 0X01; // message flag on
 	for(i=0; str[i] != '\0'; i++)
 	{
-	 PORTB = 0X03;  // char flag on
-    TXREG=str[i];	// Add a character to the output buffer
-		while(!TXIF);	// Wait while the output buffer is full
+  PORTB = 0X03;  // char flag on
+  TXREG=str[i];	// Add a character to the output buffer
+  while(!TXIF);	// Wait while the output buffer is full
     PORTB = 0X01;  // char flag off
-	}
-   PORTB = 0X00; // message flag on
+   }
+  PORTB = 0X00; // message flag on
    
 }
 

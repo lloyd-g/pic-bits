@@ -7,7 +7,7 @@ static __code uint16_t __at (0x2007)  config  = _XT_OSC & _PWRTE_ON & _BODEN_ON 
 
 // If KHZ is not specified by the makefile, assume it to be 4 MHZ
 #ifndef KHZ
-#define KHZ	4000
+#define KHZ	8000
 #endif
 
 // These are fixed.  The 16f876 can only use these as transmit and recieve.

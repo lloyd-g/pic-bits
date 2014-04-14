@@ -1,14 +1,46 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.3.0 #8604 (May 11 2013) (MINGW32)
-; This file was generated Sun Apr 06 13:26:36 2014
+; This file was generated Sat Apr 12 07:38:01 2014
 ;--------------------------------------------------------
 ; PIC16 port for the Microchip 16-bit core micros
 ;--------------------------------------------------------
 	list	p=18f26k20
 	radix	dec
-	CONFIG	FOSC=INTIO7,BOREN=OFF,WDTEN=OFF,MCLRE=OFF,STVREN=ON
-	CONFIG	LVP=OFF,CP0=OFF,FCMEN=OFF,IESO=OFF
+	CONFIG	FOSC=INTIO67
+	CONFIG	FCMEN=OFF
+	CONFIG	IESO=OFF
+	CONFIG	PWRT=OFF
+	CONFIG	BOREN=SBORDIS
+	CONFIG	BORV=30
+	CONFIG	WDTEN=OFF
+	CONFIG	WDTPS=32768
+	CONFIG	CCP2MX=PORTC
+	CONFIG	PBADEN=ON
+	CONFIG	LPT1OSC=OFF
+	CONFIG	HFOFST=ON
+	CONFIG	MCLRE=OFF
+	CONFIG	STVREN=ON
+	CONFIG	LVP=OFF
+	CONFIG	XINST=OFF
+	CONFIG	CP0=OFF
+	CONFIG	CP1=OFF
+	CONFIG	CP2=OFF
+	CONFIG	CP3=OFF
+	CONFIG	CPB=OFF
+	CONFIG	CPD=OFF
+	CONFIG	WRT0=OFF
+	CONFIG	WRT1=OFF
+	CONFIG	WRT2=OFF
+	CONFIG	WRT3=OFF
+	CONFIG	WRTC=OFF
+	CONFIG	WRTB=OFF
+	CONFIG	WRTD=OFF
+	CONFIG	EBTR0=OFF
+	CONFIG	EBTR1=OFF
+	CONFIG	EBTR2=OFF
+	CONFIG	EBTR3=OFF
+	CONFIG	EBTRB=OFF
 
 
 ;--------------------------------------------------------
@@ -240,17 +272,17 @@ r0x01	res	1
 ; ; Starting pCode block
 S_main__main	code
 _main:
-;	.line	24; main.c	TRISB = 0;
+;	.line	137; main.c	TRISB = 0;
 	CLRF	_TRISB
 _00115_DS_:
-;	.line	29; main.c	PORTB = 0;
+;	.line	142; main.c	PORTB = 0;
 	CLRF	_PORTB
-;	.line	32; main.c	delay ();
+;	.line	145; main.c	delay ();
 	CALL	_delay
-;	.line	35; main.c	PORTB = 0x5A;
+;	.line	148; main.c	PORTB = 0x5A;
 	MOVLW	0x5a
 	MOVWF	_PORTB
-;	.line	38; main.c	delay ();
+;	.line	151; main.c	delay ();
 	CALL	_delay
 	BRA	_00115_DS_
 	RETURN	
@@ -258,12 +290,12 @@ _00115_DS_:
 ; ; Starting pCode block
 S_main__delay	code
 _delay:
-;	.line	11; main.c	void delay (void)
+;	.line	124; main.c	void delay (void)
 	MOVFF	FSR2L, POSTDEC1
 	MOVFF	FSR1L, FSR2L
 	MOVFF	r0x00, POSTDEC1
 	MOVFF	r0x01, POSTDEC1
-;	.line	15; main.c	for (i = 0; i < 10000; i++)
+;	.line	128; main.c	for (i = 0; i < 10000; i++)
 	MOVLW	0x10
 	MOVWF	r0x00
 	MOVLW	0x27

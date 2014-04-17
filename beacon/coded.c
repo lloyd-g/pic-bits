@@ -12,6 +12,7 @@ void gap()
      {
           // port off
           PORTB = 0x00;
+          CCPR1L = 0b00000000 ;
           while ( delayCount < GAP ) // Delay Loop
                     {
                     delayCount++;
@@ -23,6 +24,7 @@ void space()
      {
           // port off
           PORTB = 0x00;
+          CCPR1L = 0b00000000 ;
           while ( delayCount < SP ) // Delay Loop
                     {
                     delayCount++;
@@ -36,6 +38,8 @@ void dit()
      {
           // port on
           PORTB = 0x01;
+           CCPR1L = 0b01001101 ;
+
           while ( delayCount < DIT ) // Delay Loop
                     {
                     delayCount++;
@@ -43,6 +47,7 @@ void dit()
           delayCount = 0; // reset counter
           // port off
           PORTB = 0x00;
+          CCPR1L = 0b00000000 ;
 
           // delay while off
           while ( delayCount < DIT ) // Delay Loop
@@ -57,6 +62,8 @@ void da()
      {
           // port on
           PORTB = 0x01;
+          CCPR1L = 0b01001101 ;
+
           while ( delayCount < DA ) // Delay Loop
                     {
                     delayCount++;
@@ -64,6 +71,7 @@ void da()
           delayCount = 0; // reset counter
           // port off
           PORTB = 0x00;
+          CCPR1L = 0b00000000 ;
 
           // delay while off
           while ( delayCount < DA ) // Delay Loop
@@ -94,13 +102,51 @@ void main() {
     // Initializing ports
     
     PORTB = 0;
+    PORTC = 0;
+
 
     // Set RB0 as output
     
     TRISB = 0x00;
+    TRISB = 0x00;
 
-    // Set value 0x00 to PORTB
-    PORTB = 0x00;
+ /*
+ 
+   * PWM registers configuration
+ 
+   * Fosc = 8000000 Hz
+ 
+   * Fpwm = 801.28 Hz (Requested : 800 Hz)
+ 
+   * Duty Cycle = 50 %
+ 
+   * Resolution is 10 bits
+ 
+   * Prescaler is 16
+ 
+   * Ensure that your PWM pin is configured as digital output
+ 
+   * see more details on http://www.micro-examples.com/
+ 
+   * this source code is provided 'as is',
+ 
+   * use it at your own risks
+ 
+   */
+ 
+  PR2 = 0b10011011 ;
+ 
+  T2CON = 0b00000111 ;
+ 
+  CCPR1L = 0b01001101 ;
+ 
+  CCP1CON = 0b00111100 ;
+ 
+  PORTB = 0x01;
+ 
+  PORTC = 0; 
+ 
+
 // keep repeating
     while(1) {
      dit();

@@ -138,19 +138,20 @@ void main() {
  
   T2CON = 0b00000111 ;
  
- // CCPR1L = 0b01001101 ;
-   CCPR1L = 0b00000000 ;
+   CCPR1L = 0b01001101 ;
+   //CCPR1L = 0b00000000 ;
  
   CCP1CON = 0b00111100 ;
   
  
   PORTB = 0x01;
  
-  PORTC = 0; 
+  PORTC = 0x00; 
  
 
 // keep repeating
     while(1) {
+    space();
      dit();
      dit();
      dit();

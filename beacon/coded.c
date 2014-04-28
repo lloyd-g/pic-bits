@@ -113,42 +113,25 @@ void main() {
  /*
  
    * PWM registers configuration
- 
-   * Fosc = 8000000 Hz
- 
+   * Fosc = 8000000 Hz	
    * Fpwm = 801.28 Hz (Requested : 800 Hz)
- 
    * Duty Cycle = 50 %
- 
    * Resolution is 10 bits
- 
    * Prescaler is 16
- 
    * Ensure that your PWM pin is configured as digital output
- 
    * see more details on http://www.micro-examples.com/
- 
    * this source code is provided 'as is',
- 
    * use it at your own risks
  
    */
  
-  PR2 = 0b10011011 ;
- 
-  T2CON = 0b00000111 ;
- 
-   CCPR1L = 0b01001101 ;
-   //CCPR1L = 0b00000000 ;
- 
+  PR2 = 0b10011011 ; 
+  T2CON = 0b00000111 ; 
+CCPR1L = 0b01001101 ;
   CCP1CON = 0b00111100 ;
-  
- 
-  PORTB = 0x01;
- 
+  PORTB = 0x01; 
   PORTC = 0x00; 
  
-
 // keep repeating
     while(1) {
     space();

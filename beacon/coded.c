@@ -108,7 +108,7 @@ void main() {
     // Set RB0 as output
     
     TRISB = 0x00;
-    TRISB = 0x00;
+    TRISC = 0x00;
 
  /*
  

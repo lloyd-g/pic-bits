@@ -12,7 +12,7 @@ void gap()
      {
           // port off
           PORTB = 0x00;
-          CCPR1L = 0b00000000 ;
+          TRISC = 0x04;
           while ( delayCount < GAP ) // Delay Loop
                     {
                     delayCount++;
@@ -24,7 +24,7 @@ void space()
      {
           // port off
           PORTB = 0x00;
-          CCPR1L = 0b00000000 ;
+          TRISC = 0x04;
           while ( delayCount < SP ) // Delay Loop
                     {
                     delayCount++;
@@ -38,7 +38,7 @@ void dit()
      {
           // port on
           PORTB = 0x01;
-           CCPR1L = 0b01001101 ;
+           TRISC = 0x00;
 
           while ( delayCount < DIT ) // Delay Loop
                     {
@@ -47,7 +47,7 @@ void dit()
           delayCount = 0; // reset counter
           // port off
           PORTB = 0x00;
-          CCPR1L = 0b00000000 ;
+          TRISC = 0x04;
 
           // delay while off
           while ( delayCount < DIT ) // Delay Loop
@@ -62,7 +62,7 @@ void da()
      {
           // port on
           PORTB = 0x01;
-          CCPR1L = 0b01001101 ;
+          TRISC = 0x00;
 
           while ( delayCount < DA ) // Delay Loop
                     {
@@ -71,7 +71,7 @@ void da()
           delayCount = 0; // reset counter
           // port off
           PORTB = 0x00;
-          CCPR1L = 0b00000000 ;
+          TRISC = 0x04;
 
           // delay while off
           while ( delayCount < DA ) // Delay Loop
@@ -127,7 +127,7 @@ void main() {
  
   PR2 = 0b10011011 ; 
   T2CON = 0b00000111 ; 
-CCPR1L = 0b01001101 ;
+  CCPR1L = 0b01001101 ;
   CCP1CON = 0b00111100 ;
   PORTB = 0x01; 
   PORTC = 0x03;

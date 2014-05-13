@@ -96,19 +96,20 @@
 #include <pic18fregs.h>
 
 #include <pic16/pic18f26k20.h>
-
+#include <stdint.h> //Needed for uint16_t
 //#include <pic16/delays.h>
 
 /** V A R I A B L E S *************************************************/
-#pragma udata // declare statically allocated uninitialized variables
+//#pragma udata // declare statically allocated uninitialized variables
 unsigned char LED_Number; // 8-bit variable
 
 /** D E C L A R A T I O N S *******************************************/
 // declare constant data in program memory starting at address 0x180
-#pragma romdata Data_Table = 0x180
-const rom unsigned char LED_LookupTable[8] = {0x01, 0x02, 0x04, 0x08,
+// #pragma romdata Data_Table = 0x180
+//const rom unsigned char 
+static __code uint8_t __at (0x180) LED_LookupTable[8] = {0x01, 0x02, 0x04, 0x08,
 0x10, 0x20, 0x40, 0x80};
-#pragma code // declare executable instructions
+//#pragma code // declare executable instructions
 void delay (void)
 {
   int i;

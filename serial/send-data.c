@@ -7,7 +7,7 @@ static __code uint16_t __at (0x2007)  config  = _XT_OSC & _PWRTE_ON & _BODEN_ON 
 
 // If KHZ is not specified by the makefile, assume it to be 4 MHZ
 #ifndef KHZ
-#define KHZ	8000
+#define KHZ	4000
 #endif
 
 // These are fixed.  The 16f876 can only use these as transmit and recieve.
@@ -38,6 +38,7 @@ static const char str[]={'d', 'a', 't', 'a', '\n', '\0'};
 void main(void)
 {
 	static unsigned char i;
+	static char tx;
   TRISB = 0X00;
   PORTB = 0X00;
 	TRISC|=TX_BIT|RX_BIT;	// These need to be 1 for USART to work
@@ -49,8 +50,8 @@ void main(void)
 	TXEN=1;			// Enable transmission mode
 
 	
-	//while(1) // repeat over and over
-	//{				
+	while(1) // repeat over and over
+	{				
 		PORTB = 0X01; // message flag on
 		for(i=0; str[i] != '\0'; i++)
 		{
@@ -59,30 +60,31 @@ void main(void)
 			while(!TXIF);	// Wait while the output buffer is full
 				PORTB = 0X01;  // char flag off
 		}
-		     ADCON1=0b00100010; //adc initonce
+			ADCON1=0b00100010; //adc initonce
+			TMR2=0x00;         //clear timer2 output
+			T2CON=0x04;        //start timer2
+			TRISA=0x0C;        //set AN2 (RAx) and AN3 (RAx) to inputs
+			ADCON0=0b11010101; //begin AD conversion on AN2
+			while(ADCON0<2>=1); //wait until ADCON0<1> flips to 0
+			//continue;			     
+				tx=(ADRESH/100)+0x30;	// Add a character to the output buffer 
+				TXREG=tx;
+				while(!TXIF);	// Wait while the output buffer is full
+				tx=((ADRESH/10) & 0x0F)+0x30;	// Add a character to the output buffer    
+		`		if (tx>=10) tx=tx-9;
+				TXREG=tx;
+				while(!TXIF);	// Wait while the output buffer is full
+				tx=((ADRESH) & 0x0F)+0x30;	// Add a character to the output buffer    
+		`		if (tx>=10) tx=tx-9;
+				TXREG=tx;
+				while(!TXIF);	// Wait while the output buffer is full
+				TXREG='\n';	// Add a character to the output buffer    
+				while(!TXIF);	// Wait while the output buffer is full
+				T2CON=0x00;        //end timer
 
 			     
-
-			     TMR2=0x00;         //clear timer2 output
-
-			     T2CON=0x04;        //start timer2
-
-			     TRISA=0x0C;        //set AN2 (RAx) and AN3 (RAx) to inputs
-
-			     ADCON0=0b11010101; //begin AD conversion on AN2
-
-			     while(ADCON0<2>=1) //wait until ADCON0<1> flips to 0
-
-			      continue;
-
-			     //PORTB=ADRESH;      //write ADC result to portB
-			     TXREG=ADRESH;	// Add a character to the output buffer    
-				while(!TXIF);	// Wait while the output buffer is full
-
-			     T2CON=0x00;        //end timer
-
-			     PORTC=TMR2;        //write timer result to portC
 					
 				PORTB = 0X00; // message flag on   
-	//} 
+	} 
+	
 }

@@ -70,12 +70,12 @@ void main(void)
 				tx=(ADRESH/100)+0x30;	// Add a character to the output buffer 
 				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
-				tx=((ADRESH/10) & 0x0F)+0x30;	// Add a character to the output buffer    
-		`		if (tx>=10) tx=tx-9;
+				tx=((ADRESH%10)/10)+0x30;	// Add a character to the output buffer    
+ 
 				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
-				tx=((ADRESH) & 0x0F)+0x30;	// Add a character to the output buffer    
-		`		if (tx>=10) tx=tx-9;
+				tx=(ADRESH%10)+0x30 // Add a character to the output buffer    
+ 
 				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
 				TXREG='\n';	// Add a character to the output buffer    

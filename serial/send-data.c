@@ -33,7 +33,7 @@ static __code uint16_t __at (0x2007)  config  = _XT_OSC & _PWRTE_ON & _BODEN_ON 
 
 
 // Until SDCC supports strings again the message will be far more terse.
-static const char str[]={'d', 'a', 't', 'a', '\n', '\0'};
+static const char str[]={'d', 'a', 't', 'a', '=', '\0'};
 
 void main(void)
 {
@@ -74,8 +74,7 @@ void main(void)
  
 				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
-				tx=(ADRESH%10)+0x30 // Add a character to the output buffer    
- 
+				tx=(ADRESH%10)+0x30; // Add a character to the output buffer     
 				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
 				TXREG='\n';	// Add a character to the output buffer    

@@ -67,15 +67,15 @@ void main(void)
 			ADCON0=0b11010101; //begin AD conversion on AN2
 			while(ADCON0<2>=1); //wait until ADCON0<1> flips to 0
 			//continue;			     
-				tx=(ADRESH/100)+0x30;	// Add a character to the output buffer 
+				tx=(ADRESH/100)+48;	// Add a character to the output buffer 
 				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
-				tx=((ADRESH%10)/10)+0x30;	// Add a character to the output buffer    
  
 				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
-				tx=(ADRESH%10)+0x30; // Add a character to the output buffer     
-				TXREG=tx;
+<<<<<<< .mine				tx=(ADRESH%10)+48; // Add a character to the output buffer    
+=======				tx=(ADRESH%10)+0x30; // Add a character to the output buffer     
+>>>>>>> .theirs				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
 				TXREG='\n';	// Add a character to the output buffer    
 				while(!TXIF);	// Wait while the output buffer is full

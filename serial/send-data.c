@@ -73,9 +73,8 @@ void main(void)
  
 				TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
-<<<<<<< .mine				tx=(ADRESH%10)+48; // Add a character to the output buffer    
-=======				tx=(ADRESH%10)+0x30; // Add a character to the output buffer     
->>>>>>> .theirs				TXREG=tx;
+		                tx=(ADRESH%10)+0x30; // Add a character to the output buffer     
+                                TXREG=tx;
 				while(!TXIF);	// Wait while the output buffer is full
 				TXREG='\n';	// Add a character to the output buffer    
 				while(!TXIF);	// Wait while the output buffer is full

@@ -1,3 +1,3 @@
-gpsim -c env.conf -s send-data.cod 
+gpsim -c env.conf -s loop-data.cod 
 
 cmd

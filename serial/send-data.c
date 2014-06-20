@@ -15,6 +15,11 @@
 // Until SDCC supports strings again the message will be far more terse.
 static const char str[]={'d', 'a', 't', 'a', '=', '\0'};
 
+int putchar(char ch){
+    TXREG=ch;
+    while(!TXIF);   // Wait while the output buffer is full
+    }
+
 void main(void)
 {
 	static unsigned char i;
@@ -28,7 +33,7 @@ void main(void)
 	SYNC=0;			// Disable Synchronous/Enable Asynchronous
 	SPEN=1;			// Enable serial port
 	TXEN=1;			// Enable transmission mode
-
+  TRISA=0x0C;        //set AN2 (RAx) and AN3 (RAx) to inputs
 	
 	while(1) // repeat over and over
 	{				
@@ -36,8 +41,8 @@ void main(void)
 		for(i=0; str[i] != '\0'; i++)
 		{
 			PORTB = 0X03;  // char flag on
-			TXREG=str[i];	// Add a character to the output buffer    
-			while(!TXIF);	// Wait while the output buffer is full
+			putchar(str[i]);	// Add a character to the output buffer    
+ 
 			PORTB = 0X01;  // char flag off
 		}
       
@@ -45,21 +50,18 @@ void main(void)
 		ADCON1=0b00100010; //adc initonce
 		TMR2=0x00;         //clear timer2 output
 		T2CON=0x04;        //start timer2
-		TRISA=0x0C;        //set AN2 (RAx) and AN3 (RAx) to inputs
+ 
 		ADCON0=0b11010101; //begin AD conversion on AN2
 		while(ADCON0<2>=1); //wait until ADCON0<1> flips to 0
       
 		//sending  AN2 8bit value as 3 digits			     
 		tx=(ADRESH/100)+48;	// Add a character to the output buffer 
-		TXREG=tx;
-		while(!TXIF);	// Wait while the output buffer is full
-		TXREG=tx;
-		while(!TXIF);	// Wait while the output buffer is full
+		putchar(tx);
+ 
 		tx=(ADRESH%10)+0x30; // Add a character to the output buffer     
-		TXREG=tx;
-		while(!TXIF);	// Wait while the output buffer is full
-		TXREG='\n';	// Add a character to the output buffer    
-		while(!TXIF);	// Wait while the output buffer is full
+		putchar(tx);
+ 
+		putchar('\n');
 		T2CON=0x00;        //end timer
 		PORTB = 0X00; // message flag on   
 	} 

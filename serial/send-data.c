@@ -1,3 +1,23 @@
+#include <pic14\pic16f876.h>
+#include <stdint.h> //Needed for uint16_t
+
+// last one works and puts it in ASM file
+static __code uint16_t __at (0x2007)  config  = _XT_OSC & _PWRTE_ON & _BODEN_ON & _CP_OFF & _LVP_OFF & _WDT_OFF;
+
+
+// If KHZ is not specified by the makefile, assume it to be 4 MHZ
+#ifndef KHZ
+#define KHZ	4000
+#endif
+
+// These are fixed.  The 16f876 can only use these as transmit and recieve.
+#define TX_PORT	6
+#define RX_PORT	7
+#define TX_BIT	(1<<TX_PORT)
+#define RX_BIT	(1<<RX_PORT)
+
+
+// Twiddle these as you like BUT remember that not all values work right!
 // See the datasheet for what values can work with what clock frequencies.
 #define	BAUD	9600
 #define BAUD_HI	1
@@ -11,11 +31,10 @@
 #endif
 #define SPBRG_VALUE	(unsigned char)(((KHZ*1000L)-BAUD_FACTOR)/BAUD_FACTOR)
 
-
 // Until SDCC supports strings again the message will be far more terse.
 static const char str[]={'d', 'a', 't', 'a', '=', '\0'};
 
-int putchar(char ch){
+int putchar( unsigned char ch){
     TXREG=ch;
     while(!TXIF);   // Wait while the output buffer is full
     }

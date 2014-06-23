@@ -74,10 +74,11 @@ void main(void)
 		while(ADCON0<2>=1); //wait until ADCON0<1> flips to 0
       
 		//sending  AN2 8bit value as 3 digits			     
-		tx=(ADRESH/100)+48;	// Add a character to the output buffer 
+		tx=(ADRESH/100)0x30;	// 100s
 		putchar(tx);
- 
-		tx=(ADRESH%10)+0x30; // Add a character to the output buffer     
+  	tx=((ADRESH%100)/10)+0x30; // 10s    
+		putchar(tx); 
+		tx=(ADRESH%10)+0x30; // units    
 		putchar(tx);
  
 		putchar('\n');
